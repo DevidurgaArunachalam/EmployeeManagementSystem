@@ -3,7 +3,6 @@ package com.employee.service;
 import com.employee.view.EmployeeDetails;
 
 public class EmployeeDetailsValidation extends EmployeeDetails {
-
 	public static String validateEmployeeName(String employeeName) {
 		if ((!employeeName.matches("[A-Za-z\\s]*$"))) {
 			System.out.println("Please Enter a Valid Employee Name:");
