@@ -9,8 +9,7 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 public class EmployeeServiceImpl implements EmployeeServices {
-
-	private final ArrayList<Employee> EMPLOYEEDETAILS = new ArrayList<Employee>();
+    private final ArrayList<Employee> EMPLOYEEDETAILS = new ArrayList<Employee>();
 
 	public void addDetails() {
 		int employeeId = EmployeeDetails.getEmployeeId();
@@ -18,8 +17,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		float salary = EmployeeDetails.getEmployeeSalary();
 		String emailId = EmployeeDetails.getEmailId();
-				
 		Employee employee = new Employee(employeeId, employeeName, salary, contactNumber, emailId);
+		
 		EMPLOYEEDETAILS.add(employee);
 
 	}
@@ -46,6 +45,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 
 	public void updateDetails() {
 	    ListIterator<Employee> listIterator = EMPLOYEEDETAILS.listIterator();
+		
 		while (listIterator.hasNext()) {
 			Employee employee = listIterator.next();
 			int employeeId = EmployeeDetails.getEmployeeId();
@@ -54,6 +54,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 				System.out.println(
 				    "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Go Back");
 				int choice1 = EmployeeManagement.SCANNER.nextInt();
+				
 			    switch(choice1) {
 			    case 1:							
 			        updateEmployee();
