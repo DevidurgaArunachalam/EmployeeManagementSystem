@@ -4,8 +4,7 @@ import com.employee.service.EmployeeServiceImpl;
 import com.employee.service.EmployeeServices;
 
 public class EmployeeController {
-
-	private final EmployeeServices EMPLOYEESERVICES = new EmployeeServiceImpl();
+     private final EmployeeServices EMPLOYEESERVICES = new EmployeeServiceImpl();
 
 	  public void addDetails() {
 		  EMPLOYEESERVICES.addDetails();
