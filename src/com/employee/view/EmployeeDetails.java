@@ -6,8 +6,7 @@ import com.employee.main.EmployeeManagement;
 import com.employee.service.EmployeeDetailsValidation;
 
 public class EmployeeDetails {
-
-	public static final Scanner SCANNER = new Scanner(System.in);
+    public static final Scanner SCANNER = new Scanner(System.in);
 
 	public static int getEmployeeId() {
 		System.out.println("Enter the EmployeeId:");
