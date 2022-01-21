@@ -1,7 +1,6 @@
 package com.employee.model;
 
 public class Employee {
-
 	int employeeId;
 	String employeeName;
 	float salary;
