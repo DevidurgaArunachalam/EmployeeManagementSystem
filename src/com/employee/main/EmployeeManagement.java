@@ -31,7 +31,6 @@ public class EmployeeManagement extends EmployeeDetails {
 				SCANNER.close();
 				System.exit(0);
 			}
-		} while (choice != 0);
-	}
-
+		 } while (choice != 0);
+	  }
 }
