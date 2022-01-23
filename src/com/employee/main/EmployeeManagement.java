@@ -107,23 +107,23 @@ public class EmployeeManagement extends EmployeeDetails {
 					switch(choice1) {
 				    case 1:							
 				    	updateEmployee();
-					    break;
+					break;
 					
 				    case 2:
 				    	updateEmployeeName();
-					    break;
+				        break;
 					
 				    case 3:
 				    	updateEmployeeSalary();
-					    break;
+				        break;
 					
 				    case 4:
 				    	updateEmployeeContactNumber();
-					    break;
+				        break;
 					   
 				    case 5:
 				    	updateEmployeeEmailId();
-					    break;
+				        break;
 					
 				    case 6 :
 				    	updateDateOfBirth();
