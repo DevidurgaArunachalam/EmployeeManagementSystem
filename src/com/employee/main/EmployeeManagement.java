@@ -65,7 +65,7 @@ public class EmployeeManagement extends EmployeeDetails {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		String emailId = EmployeeDetails.getEmailId();
 		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee(employeeName, salary, contactNumber, emailId ,date);
+		Employee employee = new Employee(employeeName, salary, contactNumber, emailId, date);
 		
 		EMPLOYEECONTROLLER.addEmployeeDetails(employeeId, employee);
 	}
@@ -96,8 +96,8 @@ public class EmployeeManagement extends EmployeeDetails {
 	    Iterator<Integer> iterator =EmployeeServiceImpl.EMPLOYEEDETAILS.keySet().iterator();
 		 
 		while (iterator.hasNext()) {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		int employee = iterator.next();
+		   int employeeId = EmployeeDetails.getEmployeeId();
+		   int employee = iterator.next();
 			
 				if (employee == employeeId) {
 					System.out.println(
@@ -105,36 +105,32 @@ public class EmployeeManagement extends EmployeeDetails {
 					int choice1 = EmployeeManagement.SCANNER.nextInt();
 				   
 					switch(choice1) {
-				    case 1:							
-				    	updateEmployee();
-					break;
-					
-				    case 2:
-				    	updateEmployeeName();
-				        break;
-					
-				    case 3:
-				    	updateEmployeeSalary();
-				        break;
-					
-				    case 4:
-				    	updateEmployeeContactNumber();
-				        break;
-					   
-				    case 5:
-				    	updateEmployeeEmailId();
-				        break;
-					
-				    case 6 :
-				    	updateDateOfBirth();
-				    	break;
-				   }
+				        case 1:							
+				    	   updateEmployee();
+					   break;
+				        case 2:
+				    	   updateEmployeeName();
+				           break;
+				        case 3:
+				    	   updateEmployeeSalary();
+				           break;
+		                        case 4:
+				    	   updateEmployeeContactNumber();
+				           break;
+				        case 5:
+				    	   updateEmployeeEmailId();
+				           break;
+		                        case 6 :
+				    	   updateDateOfBirth();
+				    	   break;
+				        }
 				
-				} else {
+				  } else {
 					System.out.println("EmployeeId Not Found!!.. Please Enter Vaild Id: ");
-				}
-			}
+		                  }
+	      }
 	}
+	
 	/**
 	 * This method is used to update the entire employee details
 	 *  by checking the employeeId  to update. 
@@ -146,7 +142,7 @@ public class EmployeeManagement extends EmployeeDetails {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		String emailId = EmployeeDetails.getEmailId();
 		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee(employeeName, salary, contactNumber,emailId, date);
+		Employee employee = new Employee(employeeName, salary, contactNumber, emailId, date);
 		
 		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
 	}
