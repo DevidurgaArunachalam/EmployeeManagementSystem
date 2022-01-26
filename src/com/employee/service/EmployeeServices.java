@@ -1,5 +1,7 @@
 package com.employee.service;
 
+import java.util.Date;
+
 import com.employee.model.Employee;
 /**
  * This interaface is used to implement the methods from the  EmployeeServiceImpl class.
@@ -12,4 +14,14 @@ public interface EmployeeServices {
 	public void updateEmployeeDetails (int employeeId, Employee employee);
 	
 	public void deleteEmployeeDetails (int employeeId);
+	
+	public String checkEmployeeName (String employeeName);
+	
+	public String checkContactNumber (String contactNumber);
+	
+	public String checkEmailId (String emailId);
+	
+	public String checkSalary (String salary);
+	
+	public Date dateValidation (String dateOfBirth);
 }

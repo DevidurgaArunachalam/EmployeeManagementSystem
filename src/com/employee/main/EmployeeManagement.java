@@ -1,15 +1,13 @@
 package com.employee.main;
 
 import java.util.Date;
-import java.util.Iterator;
 
 import com.employee.controller.EmployeeController;
 import com.employee.model.Employee;
-import com.employee.service.EmployeeServiceImpl;
 import com.employee.view.EmployeeDetails;
 
    /**
-   * This project describes about the Employee Management System using Collection by 
+   * It describes about the Employee Management System using Collection by 
    * implementing CRUD OPERATIONS like, add employee details,view details,update
    * if needed and delete the details by providing switch case to follow the flow
    * as per user's choice. 
@@ -18,7 +16,6 @@ import com.employee.view.EmployeeDetails;
    */
 public class EmployeeManagement extends EmployeeDetails {
     private static final EmployeeController EMPLOYEECONTROLLER = new EmployeeController();
-	private static Employee employee = new Employee();
     
 	public static void main(String[] args) {
 	   int choice;
@@ -53,6 +50,7 @@ public class EmployeeManagement extends EmployeeDetails {
 		} while (choice != 0);
 	}
 	
+	
 	/**
 	 * This method is used to add employee details as including employeeId,
 	 * name of the employee, salary details,contact number, emailId and
@@ -65,75 +63,122 @@ public class EmployeeManagement extends EmployeeDetails {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		String emailId = EmployeeDetails.getEmailId();
 		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee(employeeName, salary, contactNumber, emailId, date);
+		Employee employee = new Employee( employeeId, employeeName, salary, contactNumber, emailId, date);
 		
 		EMPLOYEECONTROLLER.addEmployeeDetails(employeeId, employee);
 	}
 	
 	/**
-	 * This method is used to view the employee details.
+	 * Used to view the employee details.
 	 */
 	private static void viewEmployeeDetails() {
 		EMPLOYEECONTROLLER.viewEmployeeDetails();
 	}
 	
 	/**
-	 * This method is used to delete the employee details by checking the employeeId.
+	 * Used to delete the employee details by checking the employeeId.
 	 */
 	private static void deleteEmployeeDetails() {
 		int employeeId = EmployeeDetails.getEmployeeId();
-
+		
 		EMPLOYEECONTROLLER.deleteEmployeeDetails(employeeId);
 	}
 	
 	/**
-	 * This method id used to update the employee details by using iterator and 
+	 * Used to update the employee details by using iterator and 
 	 * employeeId for checking the availability of the details of the employee
 	 * and then update employee details using switch case 
 	 * implemetation by user choice.
-	 */
+	 */   
 	private static void updateEmployeeDetails() {
-	    Iterator<Integer> iterator =EmployeeServiceImpl.EMPLOYEEDETAILS.keySet().iterator();
-		 
-		while (iterator.hasNext()) {
-		   int employeeId = EmployeeDetails.getEmployeeId();
-		   int employee = iterator.next();
-			
-				if (employee == employeeId) {
-					System.out.println(
-					    "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Update Date\n7.Go Back");
-					int choice1 = EmployeeManagement.SCANNER.nextInt();
+		System.out.println(
+		   "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Update Date\n7.Go Back");
+		  int choice1 = EmployeeManagement.SCANNER.nextInt();
 				   
-					switch(choice1) {
-				        case 1:							
-				    	   updateEmployee();
-					   break;
-				        case 2:
-				    	   updateEmployeeName();
-				           break;
-				        case 3:
-				    	   updateEmployeeSalary();
-				           break;
-		                        case 4:
-				    	   updateEmployeeContactNumber();
-				           break;
-				        case 5:
-				    	   updateEmployeeEmailId();
-				           break;
-		                        case 6 :
-				    	   updateDateOfBirth();
-				    	   break;
-				        }
-				
-				  } else {
-					System.out.println("EmployeeId Not Found!!.. Please Enter Vaild Id: ");
-		                  }
-	      }
+			 switch(choice1) {
+			 case 1:							
+		       updateEmployee();
+		       break;
+		     case 2:
+		       updateEmployeeName();
+		       break;
+		     case 3:
+		       updateEmployeeSalary();
+		       break;
+             case 4:
+               updateEmployeeContactNumber();
+			   break;
+			 case 5:
+			   updateEmployeeEmailId(); 
+			   break;
+		     case 6 :
+		       updateDateOfBirth();
+		       break;
+			 }
+	}
+
+	/**
+	 * Used to update DateOfBirth of the Employee
+	 */
+	private static void updateDateOfBirth() {
+		int employeeId = EmployeeDetails.getEmployeeId();
+		Date date = EmployeeDetails.getDateOfBirth();
+		Employee employee = new Employee();
+		
+		employee.setDate(date);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
 	}
 	
 	/**
-	 * This method is used to update the entire employee details
-	 *  by checking the employeeId  to update. 
+	 * Used to update emailId of the Employee
+	 */
+	private static void updateEmployeeEmailId() {
+		int employeeId = EmployeeDetails.getEmployeeId();
+		String emailId = EmployeeDetails.getEmailId();
+		Employee employee = new Employee();
+		
+		employee.setEmployeeName(emailId);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+	}
+
+	/**
+	 * Used to update DateOfBirth of the Employee
+	 */
+	private static void updateEmployeeContactNumber() {
+		int employeeId = EmployeeDetails.getEmployeeId();
+		String contactNumber = EmployeeDetails.getContactNumber();
+		Employee employee = new Employee();
+		
+		employee.setContactNumber(contactNumber);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+	}
+
+	/**
+	 * Used to update salary of the Employee
+	 */
+	private static void updateEmployeeSalary() {
+		int employeeId = EmployeeDetails.getEmployeeId();
+		String salary = EmployeeDetails.getEmployeeSalary();
+		Employee employee = new Employee();
+		
+		employee.setSalary(salary);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+	}
+
+	/**
+	 * Used to update Name of the Employee
+	 */
+	private static void updateEmployeeName() {
+		int employeeId = EmployeeDetails.getEmployeeId();
+		String employeeName = EmployeeDetails.getEmployeeName();
+		Employee employee = new Employee();
+		
+		employee.setEmployeeName(employeeName);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+	}
+
+	/**
+	 * Used to update all details of the Employee
 	 */
 	private static void updateEmployee() {
 		int employeeId = EmployeeDetails.getEmployeeId();
@@ -142,69 +187,10 @@ public class EmployeeManagement extends EmployeeDetails {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		String emailId = EmployeeDetails.getEmailId();
 		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee(employeeName, salary, contactNumber, emailId, date);
+		Employee employee = new Employee( employeeId, employeeName, salary, contactNumber, emailId, date);
 		
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
-	}
-	
-	/**
-	 * This method is used to update the employee name 
-	 * by checking employeeId.
-	 */
-	public static void updateEmployeeName() {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String employeeName =  EmployeeDetails.getEmployeeName();
-				 
-		employee.setEmployeeName(employeeName);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
-	}
-	
-	/**
-	 * This method is used to update employee salary details 
-	 * by checking employeeId
-	 */
-	public static void updateEmployeeSalary() {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String  salary = EmployeeDetails.getEmployeeSalary();
-       
-		employee.setSalary(salary);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
-	}
-	
-	/**
-	 * This methodis used to update employee contact number
-	 * by checking the employeeId.
-	 */
-	public static void updateEmployeeContactNumber() {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String contactNumber = EmployeeDetails.getContactNumber();
-			
-		employee.setContactNumber(contactNumber);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
-	}
-	
-	/**
-	 * This method is used to update the employee emailId 
-	 * by checking the employeeId.
-	 */
-	public static void updateEmployeeEmailId() {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String emailId = EmployeeDetails.getEmailId();
-				
-		employee.setEmailId(emailId);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
-	}
-	
-	/**
-	 * This method is used to update employee date of birth
-	 * by checking the employeeId.
-	 */
-	public static void updateDateOfBirth() {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		Date date = EmployeeDetails.getDateOfBirth();
-		
-		employee.setDate(date);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.addEmployeeDetails(employeeId, employee);
 	}
 	
 }
+
