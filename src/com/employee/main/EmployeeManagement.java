@@ -32,20 +32,20 @@ public class EmployeeManagement extends EmployeeDetails {
 
 			switch (choice) {
 			case 1:
-				addEmployeeDetails();
-				break;
+			  addEmployeeDetails();
+			  break;
 			case 2:
-				viewEmployeeDetails();
-				break;
+			  viewEmployeeDetails();
+			  break;
 			case 3:
-				updateEmployeeDetails();
-				break;
+			  updateEmployeeDetails();
+			  break;
 			case 4:
-				deleteEmployeeDetails();
-				break;
+			  deleteEmployeeDetails();
+			  break;
 			default:
-				SCANNER.close();
-				System.exit(5);
+			  SCANNER.close();
+			  System.exit(5);
 			}
 		} while (choice != 0);
 	}
@@ -95,25 +95,25 @@ public class EmployeeManagement extends EmployeeDetails {
 		   "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Update Date\n7.Go Back");
 		  int choice1 = EmployeeManagement.SCANNER.nextInt();
 				   
-			 switch(choice1) {
+		    switch(choice1) {
 			 case 1:							
-		       updateEmployee();
-		       break;
-		     case 2:
-		       updateEmployeeName();
-		       break;
-		     case 3:
-		       updateEmployeeSalary();
-		       break;
-             case 4:
-               updateEmployeeContactNumber();
+		           updateEmployee();
+		           break;
+		         case 2:
+		           updateEmployeeName();
+		           break;
+		         case 3:
+		           updateEmployeeSalary();
+		           break;
+                         case 4:
+                           updateEmployeeContactNumber();
 			   break;
 			 case 5:
 			   updateEmployeeEmailId(); 
 			   break;
-		     case 6 :
-		       updateDateOfBirth();
-		       break;
+		         case 6 :
+		           updateDateOfBirth();
+		           break;
 			 }
 	}
 
