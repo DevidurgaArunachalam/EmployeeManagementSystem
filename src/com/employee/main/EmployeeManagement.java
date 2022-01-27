@@ -86,30 +86,30 @@ public class EmployeeManagement extends EmployeeDetails {
 	 * implemetation by user choice.
 	 */   
 	private static void updateEmployeeDetails() {
-		System.out.println(
-		   "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Update Date\n7.Go Back");
-		  int choice1 = EmployeeManagement.SCANNER.nextInt();
+	   System.out.println(
+             "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Update Date\n7.Go Back");
+		int choice1 = EmployeeManagement.SCANNER.nextInt();
 				   
-			 switch(choice1) {
-			 case 1:							
-		       updateEmployee();
-		       break;
-		     case 2:
-		       updateEmployeeName();
-		       break;
-		     case 3:
-		       updateEmployeeSalary();
-		       break;
-             case 4:
-               updateEmployeeContactNumber();
-			   break;
-			 case 5:
-			   updateEmployeeEmailId(); 
-			   break;
-		     case 6 :
-		       updateDateOfBirth();
-		       break;
-			 }
+	        switch(choice1) {
+		case 1:							
+		    updateEmployee();
+		    break;
+		case 2:
+		    updateEmployeeName();
+		    break;
+		case 3:
+		    updateEmployeeSalary();
+		    break;
+                case 4:
+                    updateEmployeeContactNumber();
+		    break;
+		case 5:
+		    updateEmployeeEmailId(); 
+		    break;
+		case 6 :
+		    updateDateOfBirth();
+		    break;
+		}
 	}
 
 	/**
