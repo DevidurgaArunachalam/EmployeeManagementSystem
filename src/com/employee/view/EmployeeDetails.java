@@ -20,9 +20,10 @@ public class EmployeeDetails {
 	 * @return employeeId
 	 */
 	public static int getEmployeeId() {
-		System.out.println("Enter the EmployeeId:");
-		int  employeeId =SCANNER.nextInt();
-		return employeeId;
+	   System.out.println("Enter the EmployeeId:");
+	   int  employeeId =SCANNER.nextInt();
+		
+	   return employeeId;
 	}
 
 	/**
@@ -32,9 +33,10 @@ public class EmployeeDetails {
 	 * @return employeeName
 	 */
 	public static String getEmployeeName() {
-		System.out.println("Enter the EmployeeName:");
-		String employeeName = EmployeeController.checkEmployeeName(EmployeeManagement.SCANNER.next());
-		return employeeName;
+	   System.out.println("Enter the EmployeeName:");
+	   String employeeName = EmployeeController.checkEmployeeName(EmployeeManagement.SCANNER.next());
+		
+	   return employeeName;
 	}
 
 	/**
@@ -44,9 +46,10 @@ public class EmployeeDetails {
 	 * @return contactNumber
 	 */
 	public static String getContactNumber() {
-		System.out.println("Enter the Contact Number:");
-		String contactNumber = EmployeeController.checkContactNumber(EmployeeManagement.SCANNER.next());
-		return contactNumber;
+	   System.out.println("Enter the Contact Number:");
+	   String contactNumber = EmployeeController.checkContactNumber(EmployeeManagement.SCANNER.next());
+		
+	   return contactNumber;
 	}
 
 	/**
@@ -56,9 +59,10 @@ public class EmployeeDetails {
 	 * @return salary
 	 */
 	public static String getEmployeeSalary() {
-		System.out.println("Enter the Salary:");
-		String salary = EmployeeController.checkSalary(SCANNER.next());
-		return salary;
+	   System.out.println("Enter the Salary:");
+	   String salary = EmployeeController.checkSalary(SCANNER.next());
+	   
+	   return salary;
 	}
 
 	/**
@@ -68,9 +72,10 @@ public class EmployeeDetails {
 	 * @return emailId
 	 */
 	public static String getEmailId() {
-		System.out.println("Enter the EmailId:");
-		String emailId = EmployeeController.checkEmailId(EmployeeManagement.SCANNER.next());
-		return emailId;
+	   System.out.println("Enter the EmailId:");
+	   String emailId = EmployeeController.checkEmailId(EmployeeManagement.SCANNER.next());
+	
+	   return emailId;
 	}
 
 	/**
@@ -79,8 +84,8 @@ public class EmployeeDetails {
 	 * @return date
 	 */
 	public static Date getDateOfBirth() {
-		System.out.println("Enter employee date of birth (dd/MM/yyyy):"); 
-		return EmployeeController.dateValidation(EmployeeManagement.SCANNER.next());
+	   System.out.println("Enter employee date of birth (dd/MM/yyyy):"); 
+	   return EmployeeController.dateValidation(EmployeeManagement.SCANNER.next());
 	}	
 
 }
