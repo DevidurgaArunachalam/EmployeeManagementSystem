@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 */
 	public void addEmployeeDetails (int employeeId, Employee employee) {
 		EMPLOYEEDETAILS.put(employeeId, employee);
-    }
+        }
 
 	/**
 	 * Views employee details that are stored in the map and it gives both key and values.
@@ -58,29 +58,29 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @param employeeId
 	 */
 	public void updateEmployeeDetails(int employeeId, Employee employee) {
-		Employee employeeData = EMPLOYEEDETAILS.get(employeeId);
+	    Employee employeeData = EMPLOYEEDETAILS.get(employeeId);
 	    
 	    if (EMPLOYEEDETAILS.containsKey(employeeId)) {
 
-			if (employee.getEmployeeName() != null) {
-				employeeData.setEmployeeName(employee.getEmployeeName());
-				EMPLOYEEDETAILS.putIfAbsent(employeeId, employee);
-			} else if (employee.getSalary() != null) {
-				employeeData.setSalary(employee.getSalary());
-                EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
-			} else if (employee.getContactNumber() != null) {
-				employeeData.setContactNumber(employee.getContactNumber());
-                EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
-			} else if (employee.getEmailId() != null) {
-				employeeData.setEmailId(employee.getEmailId());
-				EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
-			} else if (employee.getDate() != null) {
-				employeeData.setDate(employee.getDate());
-				EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
-			} else {
-			    System.out.println("Invalid Input!!!...");
-		    }
-	        }
+		if (employee.getEmployeeName() != null) {
+		   employeeData.setEmployeeName(employee.getEmployeeName());
+		   EMPLOYEEDETAILS.putIfAbsent(employeeId, employee);
+		} else if (employee.getSalary() != null) {
+		   employeeData.setSalary(employee.getSalary());
+                   EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+		} else if (employee.getContactNumber() != null) {
+		   employeeData.setContactNumber(employee.getContactNumber());
+                   EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+		} else if (employee.getEmailId() != null) {
+		   employeeData.setEmailId(employee.getEmailId());
+		   EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+		} else if (employee.getDate() != null) {
+		   employeeData.setDate(employee.getDate());
+		   EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+		} else {
+		   System.out.println("Invalid Input!!!...");
+		}
+	    }
 	}
 	
 	/**
@@ -91,8 +91,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 */
 	public String checkEmployeeName(String employeeName) {
 		if ((!employeeName.matches("[A-Za-z]{1,}"))) {
-			System.out.println("Invalid Input!!!...");
-			return EmployeeDetails.getEmployeeName();
+		   System.out.println("Invalid Input!!!...");
+		   return EmployeeDetails.getEmployeeName();
 		} 
 		return employeeName;
 	}
@@ -105,8 +105,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 */
 	public String checkContactNumber(String contactNumber) {
 		if ((!contactNumber.matches("[6-9]{1}[0-9]{9}"))) {
-			System.out.println("Invalid Input!!!...");
-			return EmployeeDetails.getContactNumber();
+		   System.out.println("Invalid Input!!!...");
+		   return EmployeeDetails.getContactNumber();
 		} 
 		return contactNumber;
 	}
@@ -119,8 +119,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 */
 	public String checkEmailId(String emailId) {
 		if ((!emailId.matches("^[A-Za-z0-9+_.-]+@(.+)$"))) {
-			System.out.println("Invalid Input!!!...");
-			return EmployeeDetails.getEmailId();
+		    System.out.println("Invalid Input!!!...");
+		    return EmployeeDetails.getEmailId();
 		} 
 		return emailId;
 	}
@@ -134,8 +134,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 */
 	public String checkSalary(String salary) {
 		if ((!salary.matches("[0-9]{3,}"))) {
-			System.out.println("Invalid Input!!!...");
-			return EmployeeDetails.getEmployeeSalary();
+		    System.out.println("Invalid Input!!!...");
+		    return EmployeeDetails.getEmployeeSalary();
 		} 
 		return salary;
 	}
@@ -154,11 +154,11 @@ public class EmployeeServiceImpl implements EmployeeServices {
 		Date date;
 
 		try {
-			date = dateFormat.parse(dateOfBirth);
-			dateFormat.setLenient(true);
+		   date = dateFormat.parse(dateOfBirth);
+		   dateFormat.setLenient(true);
 		} catch (Exception exception) {
-			System.out.println("Please enter valid date");
-			return EmployeeDetails.getDateOfBirth();
+		   System.out.println("Please enter valid date");
+		   return EmployeeDetails.getDateOfBirth();
 		}
 		return date;
 	}
