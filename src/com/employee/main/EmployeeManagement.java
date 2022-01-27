@@ -7,8 +7,8 @@ import com.employee.model.Employee;
 import com.employee.view.EmployeeDetails;
 
    /**
-   * It describes about the Employee Management System using Collection by 
-   * implementing CRUD OPERATIONS like, add employee details,view details,update
+   * Employee Management System using Collection by implementing 
+   * CRUD OPERATIONS like, add employee details,view details,update
    * if needed and delete the details by providing switch case to follow the flow
    * as per user's choice. 
    * 
@@ -19,12 +19,7 @@ public class EmployeeManagement extends EmployeeDetails {
     
 	public static void main(String[] args) {
 	   int choice;
-	   
-	   /**
-		 * Performs switch case function for selecting according to the  preference. 1 for adding employee details, 
-		 * 2 for viewing all employee details, 3 for updating an employee detail using id, 4 for deleting details.
-		 * @param args
-		 */
+	  
 		do {
 			System.out.println(
 					"\nEmployee Management System\n1.Add Employee\n2.View EmployeeList\n3.Update Employee Details\n4.Delete Employee details\n5.Exit\nEnter your choice :");
@@ -52,9 +47,9 @@ public class EmployeeManagement extends EmployeeDetails {
 	
 	
 	/**
-	 * This method is used to add employee details as including employeeId,
+	 * Used to add employee details as including employeeId,
 	 * name of the employee, salary details,contact number, emailId and
-	 *  date of birth of the employee and pass it to the controller.  
+	 * date of birth of the employee and pass it to the controller.  
 	 */
 	private static void addEmployeeDetails() {
 		int employeeId = EmployeeDetails.getEmployeeId();
@@ -189,7 +184,7 @@ public class EmployeeManagement extends EmployeeDetails {
 		Date date = EmployeeDetails.getDateOfBirth();
 		Employee employee = new Employee( employeeId, employeeName, salary, contactNumber, emailId, date);
 		
-		EMPLOYEECONTROLLER.addEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
 	}
 	
 }

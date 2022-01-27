@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.employee.model.Employee;
 /**
- * This interaface is used to implement the methods from the  EmployeeServiceImpl class.
+ * Implements the methods from the  EmployeeServiceImpl class.
  */
 public interface EmployeeServices {
 	public void addEmployeeDetails (int employeeId, Employee employee);

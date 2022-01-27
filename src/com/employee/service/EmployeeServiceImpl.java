@@ -6,22 +6,21 @@ import com.employee.view.EmployeeDetails;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * This class is used to implement the EmployeeServices interface.
+ * Implements the EmployeeServices interface.
  * Created a linked hashmap collection for storing details for storing 
  * in insertion order maintenance and for better perrformance.
  */
 public class EmployeeServiceImpl implements EmployeeServices {
-	public final static LinkedHashMap<Integer,Employee> EMPLOYEEDETAILS = new LinkedHashMap<>();
+	private final static Map<Integer, Employee> EMPLOYEEDETAILS = new LinkedHashMap<>();
 	
 	/**
-	 * This method is for adding a new employee. Here employee id is set as key and
-	 * other details like employee name, salary, contact number,emailId and date of 
-	 * birth are stored in employe eobject.
+	 * Adds a new employee details. Here employee id is set as key andother details like 
+	 * employee name, salary, contact number,emailId and dateofbirth are stored in employe object.
 	 * 
 	 * @param employeeId 
 	 * @param employee Object
@@ -31,46 +30,62 @@ public class EmployeeServiceImpl implements EmployeeServices {
     }
 
 	/**
-	 * This method is used for viewing employee details that are stored
-	 *  in the map using iterator and it gives both key and values; 
+	 * Views employee details that are stored in the map and it gives both key and values.
 	 *  
-	 *   @param employeeId 
+	 * @param employeeId 
 	 */
 	public void viewEmployeeDetails() {
-		Iterator<Entry<Integer,Employee>> iterator = EMPLOYEEDETAILS.entrySet().iterator();
-		
-		while(iterator.hasNext()) {
-			Entry<Integer,Employee> entry = iterator.next();
-			System.out.println(entry.getKey() + " "+entry.getValue());
+		for (Entry <Integer, Employee> entry : EMPLOYEEDETAILS.entrySet()) {
+			System.out.println(entry);
 		}
 	}
 
 	/**
-	 * This method is used to delete the employee details by getting employeeId to 
-	 * check and delete.
+	 * Deletes the employee details by getting employeeId to check and delete.
 	 * 
 	 * @param employeeId 
+	 * @return 
 	 */
 	public void deleteEmployeeDetails (int employeeId) {
 		EMPLOYEEDETAILS.remove(employeeId);
 	}
 	
 	/**
-	 * This method is used to update the employee details by getting the user choice
-	 * to update as per their choice to update.
-	 * This method calls the methods in EmployeeManagement class to update
-	 * as per user choice. 
+	 * Updates the employee details by getting the user choice to update as per
+	 * their choice to update. Calls the methods in EmployeeManagement
+	 * class to update as per user choice.
 	 * 
-	 *  @param employeeId 
+	 * @param employeeId
 	 */
 	public void updateEmployeeDetails(int employeeId, Employee employee) {
-		EMPLOYEEDETAILS.put(employeeId, employee);
+		Employee employeeData = EMPLOYEEDETAILS.get(employeeId);
+	    
+	    if (EMPLOYEEDETAILS.containsKey(employeeId)) {
+
+			if (employee.getEmployeeName() != null) {
+				employeeData.setEmployeeName(employee.getEmployeeName());
+				EMPLOYEEDETAILS.putIfAbsent(employeeId, employee);
+			} else if (employee.getSalary() != null) {
+				employeeData.setSalary(employee.getSalary());
+                EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+			} else if (employee.getContactNumber() != null) {
+				employeeData.setContactNumber(employee.getContactNumber());
+                EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+			} else if (employee.getEmailId() != null) {
+				employeeData.setEmailId(employee.getEmailId());
+				EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+			} else if (employee.getDate() != null) {
+				employeeData.setDate(employee.getDate());
+				EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
+			} else {
+			    System.out.println("Invalid Input!!!...");
+		    }
+	        }
 	}
 	
 	/**
-	 * This method is used to check the employee name as accepting
-	 * only alphabets and return the validated input to the 
-	 * Employee details class.
+	 * Checks the employee name as accepting only alphabets and returns the 
+	 * validated input to the Employee Details class.
 	 * 
 	 * @return employeeName
 	 */
@@ -83,9 +98,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	}
 
 	/**
-	 * Thi method is used to check the contactNumber as accepting
-	 * only numeric values as in the pattern and return the
-	 * validated input to the Employee details class.
+	 * Checks the contactNumber as accepting only numeric values as in the pattern and returns
+	 * the validated input to the Employee details class.
 	 * 
 	 * @return contactNumber
 	 */
@@ -98,9 +112,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	}
 
 	/**
-	 * Thi method is used to check the emailId as accepting
-	 * the below given pattern and return the validated input to the 
-	 * Employee details class.
+	 * Checks the emailId as accepting the below given pattern and return the 
+	 * validated input to the Employee details class.
 	 *
 	 * @return emailId
 	 */
@@ -113,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	}
 
 	/**
-	 * Thi method is used to check the employee salary as accepting
+	 * Checks the employee salary as accepting
 	 * only numerical values and return the validated input to the 
 	 * Employee details class.
 	 * 

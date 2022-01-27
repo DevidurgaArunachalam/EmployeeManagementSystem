@@ -23,12 +23,12 @@ public class Employee {
 	/**
 	 * This Constructor creates an employee data
 	 * 
-	 * @param employeeId      employeeId.
-	 * @param employeeName    name.
-	 * @param salary          salary.
-	 * @param conatactNumber  contactNumber.
-	 * @param emailId         emailId.
-	 * @param date            dateOfBirth.
+	 * @param employeeId      
+	 * @param employeeName    
+	 * @param salary          
+	 * @param conatactNumber  
+	 * @param emailId         
+	 * @param date            
 	 */
 	public Employee (int  employeeId, String employeeName, String salary, String contactNumber, String emailId, Date date) {
 		this.employeeId = employeeId;

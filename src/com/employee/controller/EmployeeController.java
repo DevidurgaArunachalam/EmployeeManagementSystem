@@ -40,7 +40,6 @@ public class EmployeeController {
 		
 	  public static String checkEmailId (String emailId) {
 		return EMPLOYEE_SERVICES.checkEmailId(emailId);
-			
 	  }
 		
 	  public static String checkSalary (String salary) {

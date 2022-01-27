@@ -7,7 +7,7 @@ import com.employee.controller.EmployeeController;
 import com.employee.main.EmployeeManagement;
 
 /**
- * This class is used to obtain the input from the user.
+ * Used to obtain the input from the user.
  * 
  * @author DeviDurga Arunachalam
  */
@@ -74,7 +74,8 @@ public class EmployeeDetails {
 	}
 
 	/**
-	 * This method is used to get the date of birth of the employee.
+	 * Used to get the date of birth of the employee.
+	 * 
 	 * @return date
 	 */
 	public static Date getDateOfBirth() {
