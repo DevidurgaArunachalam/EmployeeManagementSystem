@@ -14,16 +14,16 @@ import com.employee.service.EmployeeServices;
 public class EmployeeController {
 	private final static EmployeeServices EMPLOYEE_SERVICES = new EmployeeServiceImpl();
 
-	  public void addEmployeeDetails (int employeeId, Employee employee) {
-		  EMPLOYEE_SERVICES.addEmployeeDetails(employeeId, employee);
+	  public void addEmployeeDetails (Employee employee) {
+		  EMPLOYEE_SERVICES.addEmployeeDetails(employee);
 	  }
 
 	  public void viewEmployeeDetails() {
 		  EMPLOYEE_SERVICES.viewEmployeeDetails();
 	  }
 	 
-	  public void updateEmployeeDetails (int employeeId, Employee employee) {
-		  EMPLOYEE_SERVICES.updateEmployeeDetails(employeeId, employee);
+	  public void updateEmployeeDetails (Employee employee) {
+		  EMPLOYEE_SERVICES.updateEmployeeDetails(employee);
 	  }
 
 	  public void deleteEmployeeDetails (int employeeId) {

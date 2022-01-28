@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * Implements the EmployeeServices interface.
@@ -25,7 +24,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @param employeeId 
 	 * @param employee Object
 	 */
-	public void addEmployeeDetails (int employeeId, Employee employee) {
+	public void addEmployeeDetails (Employee employee) {
+		int employeeId = employee.getEmployeeId();
 		EMPLOYEEDETAILS.put(employeeId, employee);
     }
 
@@ -35,8 +35,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @param employeeId 
 	 */
 	public void viewEmployeeDetails() {
-		for (Entry <Integer, Employee> entry : EMPLOYEEDETAILS.entrySet()) {
-			System.out.println(entry);
+		for (Integer data : EMPLOYEEDETAILS.keySet()) {
+			System.out.println(EMPLOYEEDETAILS.get(data));
 		}
 	}
 
@@ -44,7 +44,6 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * Deletes the employee details by getting employeeId to check and delete.
 	 * 
 	 * @param employeeId 
-	 * @return 
 	 */
 	public void deleteEmployeeDetails (int employeeId) {
 		EMPLOYEEDETAILS.remove(employeeId);
@@ -57,30 +56,25 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * 
 	 * @param employeeId
 	 */
-	public void updateEmployeeDetails(int employeeId, Employee employee) {
-		Employee employeeData = EMPLOYEEDETAILS.get(employeeId);
-	    
-	    if (EMPLOYEEDETAILS.containsKey(employeeId)) {
+	public void updateEmployeeDetails(Employee employee) {
+	    if(EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {	
+	 		Employee employeeData = EMPLOYEEDETAILS.get(employee.getEmployeeId());
 
 			if (employee.getEmployeeName() != null) {
 				employeeData.setEmployeeName(employee.getEmployeeName());
-				EMPLOYEEDETAILS.putIfAbsent(employeeId, employee);
 			} else if (employee.getSalary() != null) {
 				employeeData.setSalary(employee.getSalary());
-                EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
 			} else if (employee.getContactNumber() != null) {
 				employeeData.setContactNumber(employee.getContactNumber());
-                EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
 			} else if (employee.getEmailId() != null) {
 				employeeData.setEmailId(employee.getEmailId());
-				EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
 			} else if (employee.getDate() != null) {
 				employeeData.setDate(employee.getDate());
-				EMPLOYEEDETAILS.putIfAbsent(employeeId, employeeData);
-			} else {
-			    System.out.println("Invalid Input!!!...");
-		    }
-	        }
+			} 
+	     } else {
+	    	 System.out.println("EmployeeId not found");
+	     }
+	    	 
 	}
 	
 	/**
@@ -90,7 +84,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @return employeeName
 	 */
 	public String checkEmployeeName(String employeeName) {
-		if ((!employeeName.matches("[A-Za-z]{1,}"))) {
+		if (!employeeName.matches("[A-Za-z]{1,}")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getEmployeeName();
 		} 
@@ -104,7 +98,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @return contactNumber
 	 */
 	public String checkContactNumber(String contactNumber) {
-		if ((!contactNumber.matches("[6-9]{1}[0-9]{9}"))) {
+		if (!contactNumber.matches("[6-9]{1}[0-9]{9}")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getContactNumber();
 		} 
@@ -118,7 +112,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @return emailId
 	 */
 	public String checkEmailId(String emailId) {
-		if ((!emailId.matches("^[A-Za-z0-9+_.-]+@(.+)$"))) {
+		if (!emailId.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getEmailId();
 		} 
@@ -133,7 +127,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * @return salary
 	 */
 	public String checkSalary(String salary) {
-		if ((!salary.matches("[0-9]{3,}"))) {
+		if(!salary.matches("[0-9]{3,}")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getEmployeeSalary();
 		} 
@@ -147,22 +141,19 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	 * 
 	 * @return date
 	 */
-
 	public Date dateValidation(String dateOfBirth) {
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		dateFormat.setLenient(false);
-		Date date;
+	   Date date;
 
 		try {
-			date = dateFormat.parse(dateOfBirth);
-			dateFormat.setLenient(true);
+		   DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		   dateFormat.setLenient(false); 
+		   date = dateFormat.parse(dateOfBirth);
 		} catch (Exception exception) {
-			System.out.println("Please enter valid date");
-			return EmployeeDetails.getDateOfBirth();
+		   System.out.println("Invalid Input!!!..");
+		   return EmployeeDetails.getDateOfBirth();
 		}
 		return date;
 	}
-	
  }
 	
 

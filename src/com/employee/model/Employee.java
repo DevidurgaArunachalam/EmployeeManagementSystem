@@ -67,28 +67,28 @@ public class Employee {
 		this.employeeId = employeeId;
 	}
 	
-	public void setEmployeeName (String employeeName) {
+	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
 
-	public void setSalary (String salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
 
-	public void setContactNumber (String contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
-	public void setEmailId (String emailId) {
+	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
 	
-	public void setDate (Date date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	
 	public String toString() {
-		return new StringBuffer().append("\n").append("Name:").append(employeeName).append("\n").append("Salary:").append(salary).
+		return new StringBuffer().append("EmployeeId:").append(employeeId).append("\n").append("Name:").append(employeeName).append("\n").append("Salary:").append(salary).
 				append("\n").append("Contact Number:").append(contactNumber).append("\n").append("EmailID:").
 				append(emailId).append("\n").append("DateOfBirth:").append(date).append("\n").toString();
 	}

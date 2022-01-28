@@ -58,9 +58,9 @@ public class EmployeeManagement extends EmployeeDetails {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		String emailId = EmployeeDetails.getEmailId();
 		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee( employeeId, employeeName, salary, contactNumber, emailId, date);
+		Employee employee = new Employee(employeeId, employeeName, salary, contactNumber, emailId, date);
 		
-		EMPLOYEECONTROLLER.addEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.addEmployeeDetails(employee);
 	}
 	
 	/**
@@ -72,6 +72,8 @@ public class EmployeeManagement extends EmployeeDetails {
 	
 	/**
 	 * Used to delete the employee details by checking the employeeId.
+	 * 
+	 * 
 	 */
 	private static void deleteEmployeeDetails() {
 		int employeeId = EmployeeDetails.getEmployeeId();
@@ -114,66 +116,83 @@ public class EmployeeManagement extends EmployeeDetails {
 
 	/**
 	 * Used to update DateOfBirth of the Employee
+	 * 
+	 * @param date
 	 */
 	private static void updateDateOfBirth() {
 		int employeeId = EmployeeDetails.getEmployeeId();
 		Date date = EmployeeDetails.getDateOfBirth();
 		Employee employee = new Employee();
 		
+		employee.setEmployeeId(employeeId);
 		employee.setDate(date);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
 	}
 	
 	/**
 	 * Used to update emailId of the Employee
+	 * 
+	 * @param emailId
 	 */
 	private static void updateEmployeeEmailId() {
-		int employeeId = EmployeeDetails.getEmployeeId();
+	    int employeeId = EmployeeDetails.getEmployeeId();
 		String emailId = EmployeeDetails.getEmailId();
 		Employee employee = new Employee();
 		
+		employee.setEmployeeId(employeeId);
 		employee.setEmployeeName(emailId);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
 	}
 
 	/**
-	 * Used to update DateOfBirth of the Employee
+	 * Used to update contactNumber of the Employee
+	 * 
+	 * @param contactNumber
 	 */
 	private static void updateEmployeeContactNumber() {
 		int employeeId = EmployeeDetails.getEmployeeId();
 		String contactNumber = EmployeeDetails.getContactNumber();
 		Employee employee = new Employee();
 		
+		employee.setEmployeeId(employeeId);
 		employee.setContactNumber(contactNumber);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
 	}
 
 	/**
 	 * Used to update salary of the Employee
+	 * 
+	 * @param salary
 	 */
 	private static void updateEmployeeSalary() {
 		int employeeId = EmployeeDetails.getEmployeeId();
 		String salary = EmployeeDetails.getEmployeeSalary();
 		Employee employee = new Employee();
 		
+		employee.setEmployeeId(employeeId);
 		employee.setSalary(salary);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
 	}
 
 	/**
 	 * Used to update Name of the Employee
+	 * 
+	 * @param employeeName
 	 */
 	private static void updateEmployeeName() {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String employeeName = EmployeeDetails.getEmployeeName();
+		int employeeKey = EmployeeDetails.getEmployeeId();
+    	String employeeName = EmployeeDetails.getEmployeeName();
 		Employee employee = new Employee();
-		
+			
+		employee.setEmployeeId(employeeKey);
 		employee.setEmployeeName(employeeName);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
 	}
 
 	/**
 	 * Used to update all details of the Employee
+	 * 
+	 * @param updateEmployee
 	 */
 	private static void updateEmployee() {
 		int employeeId = EmployeeDetails.getEmployeeId();
@@ -182,9 +201,9 @@ public class EmployeeManagement extends EmployeeDetails {
 		String contactNumber = EmployeeDetails.getContactNumber();
 		String emailId = EmployeeDetails.getEmailId();
 		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee( employeeId, employeeName, salary, contactNumber, emailId, date);
+		Employee employee = new Employee(employeeId, employeeName, salary, contactNumber, emailId, date);
 		
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employeeId, employee);
+		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
 	}
 	
 }
