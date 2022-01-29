@@ -57,7 +57,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
     * @param employeeId
     */
     public void updateEmployeeDetails(Employee employee) {
-        if(EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {	
+        if (EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {	
 	    Employee employeeData = EMPLOYEEDETAILS.get(employee.getEmployeeId());
 
 	    if (employee.getEmployeeName() != null) {
@@ -126,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
     * @return salary
     */
     public String checkSalary(String salary) {
-        if(!salary.matches("[0-9]{3,}")) {
+        if (!salary.matches("[0-9]{3,}")) {
 	    System.out.println("Invalid Input!!!...");
 	    return EmployeeDetails.getEmployeeSalary();
 	} 
