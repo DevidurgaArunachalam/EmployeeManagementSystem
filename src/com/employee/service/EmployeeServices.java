@@ -3,25 +3,26 @@ package com.employee.service;
 import java.util.Date;
 
 import com.employee.model.Employee;
+
 /**
- * Implements the methods from the  EmployeeServiceImpl class.
- */
+* Implements the methods from the  EmployeeServiceImpl class.
+*/
 public interface EmployeeServices {
     public void addEmployeeDetails(Employee employee);
 
-	public void viewEmployeeDetails();
+    public void viewEmployeeDetails();
 
-	public void updateEmployeeDetails(Employee employee);
+    public void updateEmployeeDetails(Employee employee);
 	
-	public void deleteEmployeeDetails(int employeeId);
+    public void deleteEmployeeDetails(int employeeId);
 	
-	public String checkEmployeeName(String employeeName);
+    public String checkEmployeeName(String employeeName);
 	
-	public String checkContactNumber(String contactNumber);
+    public String checkContactNumber(String contactNumber);
 	
-	public String checkEmailId(String emailId);
+    public String checkEmailId(String emailId);
 	
-	public String checkSalary(String salary);
+    public String checkSalary(String salary);
 	
-	public Date dateValidation(String dateOfBirth);
+    public Date dateValidation(String dateOfBirth);
 }
