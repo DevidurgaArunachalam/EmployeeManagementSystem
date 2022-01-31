@@ -15,45 +15,43 @@ import com.employee.service.EmployeeServices;
 public class EmployeeController {
     private final static EmployeeServices EMPLOYEE_SERVICES = new EmployeeServiceImpl();
 
-	public void addEmployee(Employee employee) throws SQLException {
-	    EMPLOYEE_SERVICES.addEmployee(employee);
-	}
+    public void addEmployee(Employee employee) throws SQLException {
+	EMPLOYEE_SERVICES.addEmployee(employee);
+    }
 
-	public void viewEmployeeDetails() throws SQLException {
+    public void viewEmployeeDetails() throws SQLException {
         EMPLOYEE_SERVICES.viewEmployeeDetails();
-	}
+    }
 	 
-	public void updateEmployeeDetails(Employee employee) throws SQLException {
-	    EMPLOYEE_SERVICES.updateEmployeeDetails(employee);
-	}
+    public void updateEmployeeDetails(Employee employee) throws SQLException {
+	EMPLOYEE_SERVICES.updateEmployeeDetails(employee);
+    }
 
-	public void deleteEmployee(int employeeId) throws SQLException {
+    public void deleteEmployee(int employeeId) throws SQLException {
         EMPLOYEE_SERVICES.deleteEmployee(employeeId);
     }
 
-	public static String checkEmployeeName(String employeeName) {
+    public static String checkEmployeeName(String employeeName) {
         return EMPLOYEE_SERVICES.checkEmployeeName(employeeName);
-	}
+    }
 		
-	public static String checkContactNumber(String contactNumber) {
-	    return EMPLOYEE_SERVICES.checkContactNumber(contactNumber);	
-	}
+    public static String checkContactNumber(String contactNumber) {
+        return EMPLOYEE_SERVICES.checkContactNumber(contactNumber);	
+    }
 		
-	public static String checkEmailId(String emailId) {
-	    return EMPLOYEE_SERVICES.checkEmailId(emailId);
-	}
+    public static String checkEmailId(String emailId) {
+        return EMPLOYEE_SERVICES.checkEmailId(emailId);
+    }
 		
-	public static String checkSalary(String salary) {
-	    return EMPLOYEE_SERVICES.checkSalary(salary);	
-	}
+    public static String checkSalary(String salary) {
+        return EMPLOYEE_SERVICES.checkSalary(salary);	
+    }
 		
-	public static Date  dateValidation(String dateOfBirth) {
-	    return EMPLOYEE_SERVICES.dateValidation(dateOfBirth);
-	}
+    public static Date  dateValidation(String dateOfBirth) {
+        return EMPLOYEE_SERVICES.dateValidation(dateOfBirth);
+    }
 
     public void updateDetails(Employee employee) throws SQLException {
-        EMPLOYEE_SERVICES.updateDetails(employee);
-        
+        EMPLOYEE_SERVICES.updateDetails(employee);  
     }
-	  
 }
