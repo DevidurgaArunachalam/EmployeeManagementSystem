@@ -10,33 +10,35 @@ import java.util.Map;
 
 import com.employee.model.Employee;
 import com.employee.view.EmployeeDetails;
+
 /**
  * Class implements the database connectivity to store the values
  */
 public class EmployeeDao {
-
     protected static String databaseUrl = "jdbc:mysql://localhost:3306/employeedao";
     protected static String databaseName = "root";
     protected static String databasePassword = "Deepi@123";
-    /**
-     * Implememts the connection     
-     * @return connection
-     * @throws SQLException
-     */
+   
+   /**
+    * Implememts the connection     
+    * @return connection
+    * @throws SQLException
+    */
     protected static Connection getConnection() throws SQLException {
         Connection connection = null;
         try {
            connection = DriverManager.getConnection(databaseUrl, databaseName, databasePassword);
         } catch (Exception exception) {
-            System.out.println("Error Occured!!!...");
+           System.out.println("Error Occured!!!...");
         }
         return connection;
     }
-    /**
-     * Stores the data of employee in database
-     * @param employee
-     * @throws SQLException
-     */
+    
+   /**
+    * Stores the data of employee in database
+    * @param employee
+    * @throws SQLException
+    */
     public void addEmployee(Employee employee) throws SQLException {
         Connection connection = getConnection();
         
@@ -58,23 +60,25 @@ public class EmployeeDao {
             connection.close();
         }
     }
-    /**
-     * Shows the list of data in the database
-     * @return EMPLOYEEDETAILS
-     * @throws SQLException
-     */
+    
+   /**
+    * Shows the list of data in the database
+    * @return EMPLOYEEDETAILS
+    * @throws SQLException
+    */
     public Map<Integer, Employee> viewEmployeeData() throws SQLException {
-     final Map<Integer, Employee> EMPLOYEEDETAILS = new HashMap<>(); 
-     Connection connection = getConnection();
+        final Map<Integer, Employee> EMPLOYEEDETAILS = new HashMap<>(); 
+        Connection connection = getConnection();
      
         try {
             String query = "SELECT* FROM employeedata";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             
-            while (resultSet.next()) {
+            while(resultSet.next()) {
               Employee employee = new Employee(resultSet.getInt("employeeId"), resultSet.getString("employeeName"), resultSet.getString("employeeSalary"),
                       resultSet.getString("employeeContactNumber"), resultSet.getString("employeeEmailId"), resultSet.getDate("employeeDateOfBirth")); 
+              
               EMPLOYEEDETAILS.put(EmployeeDetails.getEmployeeId(), employee);
             }
         } catch (SQLException exception) {
@@ -84,11 +88,12 @@ public class EmployeeDao {
         }
         return EMPLOYEEDETAILS;
     }
- /**
-  * Deletes the employee details by checking the employeeId
-  * @param employeeId
-  * @throws SQLException
-  */
+    
+  /**
+   * Deletes the employee details by checking the employeeId
+   * @param employeeId
+   * @throws SQLException
+   */
     public void deleteEmployee(int employeeId) throws SQLException {
         Connection connection = getConnection();
         String query = "delete from employeedao where employeeId = ?";
@@ -103,11 +108,12 @@ public class EmployeeDao {
             connection.close(); 
         }
     }
-    /**
-     * Updates the entire employee details by getting employeeId as input
-     * @param employee
-     * @throws SQLException
-     */
+    
+   /**
+    * Updates the entire employee details by getting employeeId as input
+    * @param employee
+    * @throws SQLException
+    */
     public void updateEmployee(Employee employee) throws SQLException {
         Connection connection = getConnection();
         
@@ -136,11 +142,12 @@ public class EmployeeDao {
             connection.close(); 
         }
     }
-    /**
-     * Updates the employee details as per the user's choice
-     * @param employee
-     * @throws SQLException
-     */
+    
+    **
+    * Updates the employee details as per the user's choice
+    * @param employee
+    * @throws SQLException
+    */
     public void updateEmployeeDetails(Employee employee) throws SQLException {
         Connection connection = getConnection();
         
