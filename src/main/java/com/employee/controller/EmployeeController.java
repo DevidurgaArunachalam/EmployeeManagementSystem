@@ -24,8 +24,8 @@ public class EmployeeController {
 	}
 
 	public void viewEmployeeDetails() {
-        EMPLOYEE_SERVICES.viewEmployeeDetails();
-        EMPLOYEE_DB.viewEmployeeData();  
+            EMPLOYEE_SERVICES.viewEmployeeDetails();
+            EMPLOYEE_DB.viewEmployeeData();  
 	}
 	 
 	public void updateEmployeeDetails(Employee employee) throws DataNotFoundException {
