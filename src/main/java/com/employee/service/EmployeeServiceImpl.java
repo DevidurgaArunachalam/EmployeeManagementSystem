@@ -1,6 +1,6 @@
 package com.employee.service;
 
-import com.employee.dao.EmployeeDao;
+import com.employee.exception.DataNotFoundException;
 import com.employee.model.Employee;
 import com.employee.view.EmployeeDetails;
 
@@ -17,79 +17,73 @@ import java.util.Map;
  */
 public class EmployeeServiceImpl implements EmployeeServices {
 	private final static Map<Integer, Employee> EMPLOYEEDETAILS = new LinkedHashMap<Integer, Employee>();
-	private static final EmployeeDao EMPLOYEEDAO = new EmployeeDao();
+	
 	/**
 	* Adds a new employee details. Here employee id is set as key andother details like 
 	* employee name, salary, contact number, emailId and dateofbirth are stored in employe object.
 	* @param employee Object
 	* @throws SQLException 
 	*/
-	public void addEmployee(Employee employee) throws SQLException {
-	    if (EMPLOYEEDETAILS.isEmpty()) {
-	        EMPLOYEEDETAILS.putAll(EMPLOYEEDAO.viewEmployeeData());
-	    }
-	    if(EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {
-		    System.out.println("The employeeId already exists!!...");
-		} else {
-		    EMPLOYEEDAO.addEmployee(employee);   
-		    EMPLOYEEDETAILS.put(employee.getEmployeeId(), employee); 
-		} 
+	public void addEmployee(Employee employee) {
+        int employeeId = employee.getEmployeeId();
+        
+        if (EMPLOYEEDETAILS.containsKey(employeeId)) {
+            System.out.println("The employeeId already exists!!...");
+        } else {
+            EMPLOYEEDETAILS.put(employeeId, employee);
+        }
     }
 
    /**
 	* Views employee details that are stored in the map and it gives both key and values.
 	*/
-	public void viewEmployeeDetails() throws SQLException{
-	    System.out.println(EMPLOYEEDAO.viewEmployeeData());
-	}
+	public void viewEmployeeDetails() {
+        for (Integer data : EMPLOYEEDETAILS.keySet()) {
+            System.out.println(EMPLOYEEDETAILS.get(data));
+        }
+    }
 
    /**
 	* Deletes the employee details by getting employeeId to check and delete.
 	* @param employeeId 
- * @throws SQLException 
+    * @throws SQLException 
 	*/
-	public void deleteEmployee(int employeeId) throws SQLException {
-		if (EMPLOYEEDETAILS.isEmpty()) {
-		    EMPLOYEEDETAILS.putAll(EMPLOYEEDAO.viewEmployeeData());
-		}
-	    if (EMPLOYEEDETAILS.containsKey(employeeId)) {
-		    EMPLOYEEDETAILS.remove(employeeId);
-		    EMPLOYEEDAO.deleteEmployee(employeeId);
-		    System.out.println("Deleted Data Successfully!!!...");
-		} else {
-		    System.out.println("employeeId doesnot exists");
-		}
-	}
+	public void deleteEmployee(int employeeId) throws DataNotFoundException{
+	    
+        if(EMPLOYEEDETAILS.containsKey(employeeId)) {
+            EMPLOYEEDETAILS.remove(employeeId); 
+        } else {
+            throw new DataNotFoundException("message");
+        }
+    }
 	
    /**
 	* Updates the employee details by getting the user choice to update as per
 	* their choice to update. Calls the methods in EmployeeManagement
 	* class to update as per user choice.
 	* @param employee
+ * @throws DataNotFoundException 
 	*/
-	public void updateEmployeeDetails(Employee employee) throws SQLException{
-	    if(EMPLOYEEDETAILS.isEmpty()) {
-	        EMPLOYEEDETAILS.putAll(EMPLOYEEDAO.viewEmployeeData()); 
-	    }
-	    if (EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {	
-	 		Employee employeeData = EMPLOYEEDETAILS.get(employee.getEmployeeId());
+	public void updateEmployeeDetails(Employee employee) throws DataNotFoundException {
+	    
+        if(EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) { 
+            Employee employeeData = EMPLOYEEDETAILS.get(employee.getEmployeeId());
 
-			if (employee.getEmployeeName() != null) {
-				employeeData.setEmployeeName(employee.getEmployeeName());
-			} else if (employee.getSalary() != null) {
-				employeeData.setSalary(employee.getSalary());
-			} else if (employee.getContactNumber() != null) {
-				employeeData.setContactNumber(employee.getContactNumber());
-			} else if (employee.getEmailId() != null) {
-				employeeData.setEmailId(employee.getEmailId());
-			} else if (employee.getDateOfBirth() != null) {
-				employeeData.setDateOfBirth(employee.getDateOfBirth());
-			} 
-			EMPLOYEEDAO.updateEmployeeDetails(employeeData);
-	     } else {
-	    	 System.out.println("EmployeeId not found");
-	     }
-	}
+            if (employee.getEmployeeName() != null) {
+                employeeData.setEmployeeName(employee.getEmployeeName());
+            } else if (employee.getSalary() != null) {
+                employeeData.setSalary(employee.getSalary());
+            } else if (employee.getContactNumber() != null) {
+                employeeData.setContactNumber(employee.getContactNumber());
+            } else if (employee.getEmailId() != null) {
+                employeeData.setEmailId(employee.getEmailId());
+            } else if (employee.getDateOfBirth() != null) {
+                employeeData.setDateOfBirth(employee.getDateOfBirth());
+            } 
+         } else {
+             throw new DataNotFoundException("message");
+         }
+    }
 	
    /**
 	* Checks the employee name as accepting only alphabets and returns the 
@@ -97,6 +91,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	* @return employeeName
 	*/
 	public String checkEmployeeName(String employeeName) {
+	    
 		if (!employeeName.matches("[A-Za-z]{1,}")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getEmployeeName();
@@ -110,6 +105,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	* @return contactNumber
 	*/
 	public String checkContactNumber(String contactNumber) {
+	    
 		if (!contactNumber.matches("[6-9]{1}[0-9]{9}")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getContactNumber();
@@ -123,6 +119,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	* @return emailId
 	*/
 	public String checkEmailId(String emailId) {
+	    
 		if (!emailId.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getEmailId();
@@ -137,7 +134,8 @@ public class EmployeeServiceImpl implements EmployeeServices {
     * @return salary
 	*/
 	public String checkSalary(String salary) {
-		if(!salary.matches("[0-9]{3,}")) {
+	    
+		if (!salary.matches("[0-9]{3,}")) {
 			System.out.println("Invalid Input!!!...");
 			return EmployeeDetails.getEmployeeSalary();
 		} 
@@ -162,29 +160,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 		   System.out.println("Invalid Input!!!..");
 		   return EmployeeDetails.getDateOfBirth();
 		}
-         return EmployeeDetails.getDateOfBirth();
-	}
-   /**
-	* Updates the entire details of the employee by checking the employeeId   
-	*/
-	public void updateDetails(Employee employee) throws SQLException {
-	    if(EMPLOYEEDETAILS.isEmpty()) {
-            EMPLOYEEDETAILS.putAll(EMPLOYEEDAO.viewEmployeeData()); 
-        }
-	    if(EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {    
-            Employee employeeData = EMPLOYEEDETAILS.get(employee.getEmployeeId());
-
-            if(employee.getEmployeeName() != null && employee.getSalary() != null && employee.getContactNumber() 
-                != null && employee.getEmailId() != null &&  employee.getDateOfBirth() != null) {
-                employeeData.setEmployeeName(employee.getEmployeeName());
-                employeeData.setSalary(employee.getSalary());
-                employeeData.setContactNumber(employee.getContactNumber());
-                employeeData.setEmailId(employee.getEmailId());
-                employeeData.setDateOfBirth(employee.getDateOfBirth());
-            }
-	    } else {
-            System.out.println("EmployeeId not found");
-        }
+         return Date.valueOf(dateOfBirth);
 	}
  }
 	

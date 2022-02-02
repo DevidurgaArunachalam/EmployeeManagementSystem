@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 import com.employee.controller.EmployeeController;
+import com.employee.exception.DataNotFoundException;
 import com.employee.model.Employee;
 import com.employee.view.EmployeeDetails;
 
@@ -12,16 +13,15 @@ import com.employee.view.EmployeeDetails;
  * CRUD OPERATIONS like, add employee details,view details,update
  * if needed and delete the details by providing switch case to follow the flow
  * as per user's choice. 
- * 
  * @author Devidurga Arunachalam
  */
 public class EmployeeManagement extends EmployeeDetails {
     private static final EmployeeController EMPLOYEECONTROLLER = new EmployeeController();
        
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws DataNotFoundException {
 	   int choice;
 	  
-		do {
+	   do {
 			System.out.println(
 					"\nEmployee Management System\n1.Add Employee\n2.View EmployeeList\n3.Update Employee Details\n4.Delete Employee details\n5.Exit\nEnter your choice :");
 			choice = SCANNER.nextInt();
@@ -51,7 +51,7 @@ public class EmployeeManagement extends EmployeeDetails {
 	 * name of the employee, salary details,contact number, emailId and
 	 * date of birth of the employee and pass it to the controller.  
 	 */
-	private static void addEmployee() throws SQLException {
+	private static void addEmployee() {
 		int employeeId = EmployeeDetails.getEmployeeId();
 		String employeeName = EmployeeDetails.getEmployeeName();
 		String salary = EmployeeDetails.getEmployeeSalary();
@@ -65,17 +65,17 @@ public class EmployeeManagement extends EmployeeDetails {
 	
 	/**
 	 * Used to view the employee details.
+	 * @throws SQLException 
 	 */
-	private static void viewEmployeeDetails() throws SQLException {
+	private static void viewEmployeeDetails() {
 		EMPLOYEECONTROLLER.viewEmployeeDetails();
 	}
 	
 	/**
 	 * Used to delete the employee details by checking the employeeId.
-	 * 
-	 * 
+	 * @throws DataNotFoundException 
 	 */
-	private static void deleteEmployee() throws SQLException {
+	private static void deleteEmployee() throws DataNotFoundException {
 		EMPLOYEECONTROLLER.deleteEmployee(EmployeeDetails.getEmployeeId());
 	}
 	
@@ -84,125 +84,55 @@ public class EmployeeManagement extends EmployeeDetails {
 	* employeeId for checking the availability of the details of the employee
 	* and then update employee details using switch case 
 	* implemetation by user choice.
+ * @throws DataNotFoundException 
 	*/   
-	private static void updateEmployeeDetails() throws SQLException {
-		System.out.println(
-		   "Enter Your Choice To Update:\n1.Update Employee Details\n2.Update Name\n3.Update Salary\n4.Update Contact Number\n5.Update EmailId\n6.Update Date\n7.Go Back");
-		  int choice = EmployeeManagement.SCANNER.nextInt();
-				   
-			 switch(choice) {
-			 case 1:							
-		       updateEmployee();
-		       break;
-		     case 2:
-		       updateEmployeeName();
-		       break;
-		     case 3:
-		       updateEmployeeSalary();
-		       break;
-             case 4:
-               updateEmployeeContactNumber();
-			   break;
-			 case 5:
-			   updateEmployeeEmailId(); 
-			   break;
-		     case 6 :
-		       updateDateOfBirth();
-		       break;
-			 }
-	}
-
-	/**
-	 * Used to update DateOfBirth of the Employee
-	 * 
-	 * @param date
-	 */
-	private static void updateDateOfBirth() throws SQLException {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		Date dateOfBirth = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee();
-		
-		employee.setEmployeeId(employeeId);
-		employee.setDateOfBirth(dateOfBirth);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
-	}
-	
-	/**
-	 * Used to update emailId of the Employee
-	 * 
-	 * @param emailId
-	 */
-	private static void updateEmployeeEmailId() throws SQLException {
+	private static void updateEmployeeDetails() throws DataNotFoundException {
 	    int employeeId = EmployeeDetails.getEmployeeId();
-		String emailId = EmployeeDetails.getEmailId();
-		Employee employee = new Employee();
-		
-		employee.setEmployeeId(employeeId);
-		employee.setEmployeeName(emailId);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
-	}
-
-	/**
-	 * Used to update contactNumber of the Employee
-	 * 
-	 * @param contactNumber
-	 */
-	private static void updateEmployeeContactNumber() throws SQLException {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String contactNumber = EmployeeDetails.getContactNumber();
-		Employee employee = new Employee();
-		
-		employee.setEmployeeId(employeeId);
-		employee.setContactNumber(contactNumber);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
-	}
-
-	/**
-	 * Used to update salary of the Employee
-	 * 
-	 * @param salary
-	 */
-	private static void updateEmployeeSalary() throws SQLException {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String salary = EmployeeDetails.getEmployeeSalary();
-		Employee employee = new Employee();
-		
-		employee.setEmployeeId(employeeId);
-		employee.setSalary(salary);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
-	}
-
-	/**
-	 * Used to update Name of the Employee
-	 * 
-	 * @param employeeName
-	 */
-	private static void updateEmployeeName() throws SQLException {
-		int employeeKey = EmployeeDetails.getEmployeeId();
-    	String employeeName = EmployeeDetails.getEmployeeName();
-		Employee employee = new Employee();
-			
-		employee.setEmployeeId(employeeKey);
-		employee.setEmployeeName(employeeName);
-		EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
-	}
-
-	/**
-	 * Used to update all details of the Employee
-	 * 
-	 * @param updateEmployee
-	 */
-	private static void updateEmployee() throws SQLException {
-		int employeeId = EmployeeDetails.getEmployeeId();
-		String employeeName = EmployeeDetails.getEmployeeName();
-		String salary = EmployeeDetails.getEmployeeSalary();
-		String contactNumber = EmployeeDetails.getContactNumber();
-		String emailId = EmployeeDetails.getEmailId();
-		Date date = EmployeeDetails.getDateOfBirth();
-		Employee employee = new Employee(employeeId, employeeName, salary, contactNumber, emailId, date);
-		
-		EMPLOYEECONTROLLER.updateDetails(employee);
-	}
-	
+	    String employeeName = null;
+	    String salary = null;
+	    String contactNumber = null;
+	    String emailId = null;
+	    Date dateOfBirth = null;
+	    
+	    System.out.println("Update Changes To Employee Name ?\n yes or no");
+	    
+        if (EmployeeDetails.SCANNER.next().equalsIgnoreCase("yes")) {
+	        employeeName  = EmployeeDetails.getEmployeeName();
+	    }
+	    
+	    System.out.println("Update Changes To Employee Salary ?\n yes or no");
+	    
+	    if (EmployeeDetails.SCANNER.next().equalsIgnoreCase("yes")) {
+	        salary = EmployeeDetails.getEmployeeSalary();
+	    }
+	    
+	    System.out.println("Update Changes To Employee Contact Number ?\n yes or no");
+	    
+	    if(EmployeeDetails.SCANNER.next().equalsIgnoreCase("yes")) {
+	        contactNumber = EmployeeDetails.getContactNumber();
+	    }
+	    
+	    System.out.println("Update Changes To Employee EmailId ?\n yes or no");
+	    
+	    if(EmployeeDetails.SCANNER.next().equalsIgnoreCase("yes")) {
+	        emailId = EmployeeDetails.getEmailId();
+	    }
+	    
+	    System.out.println("Update Changes To Employee DateOfBirth ?\n yes or no");
+        
+	    if(EmployeeDetails.SCANNER.next().equalsIgnoreCase("yes")) {
+            dateOfBirth = EmployeeDetails.getDateOfBirth();
+        }
+        Employee employee = new Employee();
+        
+        employee.setEmployeeId(employeeId);
+        employee.setEmployeeName(employeeName);
+        employee.setSalary(salary);
+        employee.setContactNumber(contactNumber);
+        employee.setEmailId(emailId);
+        employee.setDateOfBirth(dateOfBirth);
+        
+        EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
+	}    
 }
 

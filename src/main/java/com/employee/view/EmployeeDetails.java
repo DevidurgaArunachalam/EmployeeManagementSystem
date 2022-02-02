@@ -8,7 +8,6 @@ import com.employee.main.EmployeeManagement;
 
 /**
 * Used to obtain the input from the user.
-* 
 * @author DeviDurga Arunachalam
 */
 public class EmployeeDetails {
@@ -79,8 +78,7 @@ public class EmployeeDetails {
 	*/
 	public static Date getDateOfBirth() {
 		System.out.println("Enter employee date of birth (YYYY-MM-dd):"); 
-		return EmployeeController.dateValidation(EmployeeManagement.SCANNER.next());
-        
+		return EmployeeController.dateValidation(EmployeeManagement.SCANNER.next());  
 	}	
 }
 	   

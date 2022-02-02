@@ -1,10 +1,12 @@
 package com.employee.controller;
 
 import java.sql.Date;
-import java.sql.SQLException;
 
+import com.employee.dao.EmployeeDB;
+import com.employee.exception.DataNotFoundException;
 import com.employee.model.Employee;
 import com.employee.service.EmployeeServiceImpl;
+import com.employee.service.EmployeeServiceImplVersion2;
 import com.employee.service.EmployeeServices;
 
 /**
@@ -14,20 +16,24 @@ import com.employee.service.EmployeeServices;
 */
 public class EmployeeController {
     private final static EmployeeServices EMPLOYEE_SERVICES = new EmployeeServiceImpl();
-
-	public void addEmployee(Employee employee) throws SQLException {
+    private final static EmployeeDB EMPLOYEE_DB = new EmployeeServiceImplVersion2();
+    
+	public void addEmployee(Employee employee) {
 	    EMPLOYEE_SERVICES.addEmployee(employee);
+	    EMPLOYEE_DB.addEmployee(employee);
 	}
 
-	public void viewEmployeeDetails() throws SQLException {
+	public void viewEmployeeDetails() {
         EMPLOYEE_SERVICES.viewEmployeeDetails();
+        EMPLOYEE_DB.viewEmployeeData();  
 	}
 	 
-	public void updateEmployeeDetails(Employee employee) throws SQLException {
+	public void updateEmployeeDetails(Employee employee) throws DataNotFoundException {
 	    EMPLOYEE_SERVICES.updateEmployeeDetails(employee);
+	    EMPLOYEE_DB.updateEmployeeDetails(employee);
 	}
 
-	public void deleteEmployee(int employeeId) throws SQLException {
+	public void deleteEmployee(int employeeId) throws DataNotFoundException {
         EMPLOYEE_SERVICES.deleteEmployee(employeeId);
     }
 
@@ -47,13 +53,7 @@ public class EmployeeController {
 	    return EMPLOYEE_SERVICES.checkSalary(salary);	
 	}
 		
-	public static Date  dateValidation(String dateOfBirth) {
+	public static Date  dateValidation(String dateOfBirth) {                     
 	    return EMPLOYEE_SERVICES.dateValidation(dateOfBirth);
 	}
-
-    public void updateDetails(Employee employee) throws SQLException {
-        EMPLOYEE_SERVICES.updateDetails(employee);
-        
-    }
-	  
 }
