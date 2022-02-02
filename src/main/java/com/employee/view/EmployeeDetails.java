@@ -11,75 +11,75 @@ import com.employee.main.EmployeeManagement;
 * @author DeviDurga Arunachalam
 */
 public class EmployeeDetails {
-	public static final Scanner SCANNER = new Scanner(System.in);
+    public static final Scanner SCANNER = new Scanner(System.in);
 
    /**
-	* Used to get the user Id in the numerical values.
-	* @return employeeId
+    * Used to get the user Id in the numerical values.
+    * @return employeeId
     */
-	public static int getEmployeeId() {
-		System.out.println("Enter the EmployeeId:");
-		int employeeId = SCANNER.nextInt();
+    public static int getEmployeeId() {
+	System.out.println("Enter the EmployeeId:");
+	int employeeId = SCANNER.nextInt();
 		
-		return employeeId;
-	}
+	return employeeId;
+    }
 
    /**
-	* Used to get the user name.
-	* By calling the EmployeeDetailsValidation class to validate the input. 
-	* @return employeeName
-	*/
-	public static String getEmployeeName() {
-		System.out.println("Enter the EmployeeName:");
-		String employeeName = EmployeeController.checkEmployeeName(EmployeeManagement.SCANNER.next());
-		
-		return employeeName;
-	}
-
-   /**
-	* Used to get the contact number.
-	* By calling the EmployeeDetailsValidation class to validate the input.
-	* @return contactNumber
-	*/
-	public static String getContactNumber() {
-		System.out.println("Enter the Contact Number:");
-		String contactNumber = EmployeeController.checkContactNumber(EmployeeManagement.SCANNER.next());
-		
-		return contactNumber;
-	}
-
-   /**
-	* Used to get employee salary details.
-	* By calling the EmployeeDetailsValidation class to validate the input.
-	* @return salary
-	*/
-	public static String getEmployeeSalary() {
-		System.out.println("Enter the Salary:");
-		String salary = EmployeeController.checkSalary(SCANNER.next());
-		
-		return salary;
-	}
-
-   /**
-	* Used to get the email Id.
-	* By calling the EmployeeDetailsValidation class to validate the input.
-	* @return emailId
+    * Used to get the user name.
+    * By calling the EmployeeDetailsValidation class to validate the input. 
+    * @return employeeName
     */
-	public static String getEmailId() {
-		System.out.println("Enter the EmailId:");
-		String emailId = EmployeeController.checkEmailId(EmployeeManagement.SCANNER.next());
+    public static String getEmployeeName() {
+	System.out.println("Enter the EmployeeName:");
+	String employeeName = EmployeeController.checkEmployeeName(EmployeeManagement.SCANNER.next());
 		
-		return emailId;
-	}
+	return employeeName;
+    }
 
    /**
-	* Used to get the date of birth of the employee.
-	* @return date
-	*/
-	public static Date getDateOfBirth() {
-		System.out.println("Enter employee date of birth (YYYY-MM-dd):"); 
-		return EmployeeController.dateValidation(EmployeeManagement.SCANNER.next());  
-	}	
+    * Used to get the contact number.
+    * By calling the EmployeeDetailsValidation class to validate the input.
+    * @return contactNumber
+    */
+    public static String getContactNumber() {
+	System.out.println("Enter the Contact Number:");
+	String contactNumber = EmployeeController.checkContactNumber(EmployeeManagement.SCANNER.next());
+		
+	return contactNumber;
+    }
+
+   /**
+    * Used to get employee salary details.
+    * By calling the EmployeeDetailsValidation class to validate the input.
+    * @return salary
+    */
+    public static String getEmployeeSalary() {
+	System.out.println("Enter the Salary:");
+	String salary = EmployeeController.checkSalary(SCANNER.next());
+		
+	return salary;
+    }
+
+   /**
+    * Used to get the email Id.
+    * By calling the EmployeeDetailsValidation class to validate the input.
+    * @return emailId
+    */
+    public static String getEmailId() {
+	System.out.println("Enter the EmailId:");
+	String emailId = EmployeeController.checkEmailId(EmployeeManagement.SCANNER.next());
+		
+	return emailId;
+    }
+
+   /**
+    * Used to get the date of birth of the employee.
+    * @return date
+    */
+    public static Date getDateOfBirth() {
+	System.out.println("Enter employee date of birth (YYYY-MM-dd):"); 
+	return EmployeeController.dateValidation(EmployeeManagement.SCANNER.next());  
+    }	
 }
 	   
 	
