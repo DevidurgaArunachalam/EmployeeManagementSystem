@@ -34,11 +34,11 @@ public class EmployeeController {
 	}
 
 	public void deleteEmployee(int employeeId) throws DataNotFoundException {
-        EMPLOYEE_SERVICES.deleteEmployee(employeeId);
-    }
+            EMPLOYEE_SERVICES.deleteEmployee(employeeId);
+        }
 
 	public static String checkEmployeeName(String employeeName) {
-        return EMPLOYEE_SERVICES.checkEmployeeName(employeeName);
+            return EMPLOYEE_SERVICES.checkEmployeeName(employeeName);
 	}
 		
 	public static String checkContactNumber(String contactNumber) {
