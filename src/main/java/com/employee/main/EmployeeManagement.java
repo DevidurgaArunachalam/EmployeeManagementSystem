@@ -65,7 +65,6 @@ public class EmployeeManagement extends EmployeeDetails {
 	
    /**
     * Used to view the employee details.
-    * @throws SQLException 
     */
     private static void viewEmployeeDetails() {
 	EMPLOYEECONTROLLER.viewEmployeeDetails();
