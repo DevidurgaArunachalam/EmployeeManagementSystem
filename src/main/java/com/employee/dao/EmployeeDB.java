@@ -1,7 +1,9 @@
 package com.employee.dao;
 
 import com.employee.model.Employee;
-
+/**
+* Inteface created for Employee database
+*/
 public interface EmployeeDB {
     void addEmployee(Employee employee);
     
