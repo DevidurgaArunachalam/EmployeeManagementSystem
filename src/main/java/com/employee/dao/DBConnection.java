@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * <h> 
+ * <h> Database connectivity </h>
  * 
  * @author DeviDurgaA
  */
