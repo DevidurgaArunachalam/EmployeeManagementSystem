@@ -1,11 +1,13 @@
 package com.employee.service;
 
+import java.util.Map;
+
 import com.employee.dao.EmployeeDB;
 import com.employee.dao.EmployeeDao;
 import com.employee.model.Employee;
 
 /**
- * Implements the EmployeeDB interface
+ * <h> Implements the EmployeeDB interface </h>
  */
  public class EmployeeServiceImplVersion2 implements EmployeeDB {
     final EmployeeDao EMPLOYEEDAO = new EmployeeDao();
@@ -13,9 +15,9 @@ import com.employee.model.Employee;
     public void addEmployee(Employee employee) {
         EMPLOYEEDAO.addEmployee(employee);
     }
-
-    public void viewEmployeeData() {
-        EMPLOYEEDAO.viewEmployeeData();
+ 
+    public Map<Integer, Employee> viewEmployeeData() {
+        return EMPLOYEEDAO.viewEmployeeData();
     }
 
     public void deleteEmployee(int employeeId) {

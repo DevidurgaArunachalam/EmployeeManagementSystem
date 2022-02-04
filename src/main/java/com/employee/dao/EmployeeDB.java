@@ -1,13 +1,18 @@
 package com.employee.dao;
 
+import java.util.Map;
+
 import com.employee.model.Employee;
 
+/**
+* <h> Inteface created for Employee database </h>
+*/
 public interface EmployeeDB {
-    void addEmployee(Employee employee);
+    void addEmployee(final Employee employee);
     
-    void viewEmployeeData();
+    Map<Integer, Employee> viewEmployeeData();
     
-    void deleteEmployee(int employeeId);
+    void deleteEmployee(final int employeeId);
     
-    void updateEmployeeDetails(Employee employee);
+    void updateEmployeeDetails(final Employee employee);
 }
