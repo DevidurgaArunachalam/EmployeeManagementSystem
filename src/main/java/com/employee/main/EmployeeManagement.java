@@ -1,5 +1,7 @@
 package com.employee.main;
 
+import com.employee.exception.CustomException.DataNotFoundException;
+import com.employee.exception.CustomException.IdAlreadyExistsException;
 import com.employee.view.EmployeeDetails;
 
 /**
@@ -13,7 +15,7 @@ import com.employee.view.EmployeeDetails;
  * @author Devidurga Arunachalam
  */
 public class EmployeeManagement {
-   	public static void main(String[] args) {
+   	public static void main(String[] args) throws IdAlreadyExistsException, DataNotFoundException {
 	   int choice;
 	  
 	   do {
@@ -36,9 +38,9 @@ public class EmployeeManagement {
 				break;
  			default:
 			    EmployeeDetails.SCANNER.close();
-				System.exit(5);
+				System.exit(0);
 			}
-		} while (choice != 0);
+		} while (true);
 	}
 }
 

@@ -1,7 +1,8 @@
 package com.employee.controller;
 
-import com.employee.dao.EmployeeDB;
-import com.employee.exception.DataNotFoundException;
+import com.employee.exception.CustomException.DataNotFoundException;
+import com.employee.exception.CustomException.IdAlreadyExistsException;
+import com.employee.exception.CustomException.IdNotFoundException;
 import com.employee.model.Employee;
 import com.employee.service.EmployeeServiceImpl;
 import com.employee.service.EmployeeServiceImplVersion2;
@@ -15,25 +16,26 @@ import com.employee.service.EmployeeServices;
  * </p>   
  */
 public class EmployeeController {
-    private final static EmployeeServices EMPLOYEE_SERVICES = new EmployeeServiceImpl();
-    private final static EmployeeDB EMPLOYEE_DB = new EmployeeServiceImplVersion2();
+    private final EmployeeServices EMPLOYEE_SERVICES = new EmployeeServiceImpl();
+    private final EmployeeServiceImplVersion2 EMPLOYEE_IMPL = new EmployeeServiceImplVersion2();
     
-	public void addEmployee(Employee employee) {
+	public void addEmployee(final Employee employee) throws IdAlreadyExistsException {
 	    EMPLOYEE_SERVICES.addEmployee(employee);
-	    EMPLOYEE_DB.addEmployee(employee);
+	    EMPLOYEE_IMPL.addEmployee(employee);
 	}
 
-	public void viewEmployeeDetails() {
-        EMPLOYEE_SERVICES.viewEmployeeDetails();
-        EMPLOYEE_DB.viewEmployeeData();  
+	public void viewEmployeeDetails() throws DataNotFoundException{
+        EMPLOYEE_SERVICES.viewEmployeeDetails(); 
+        EMPLOYEE_IMPL.viewEmployeeData();  
 	}
 	 
-	public void updateEmployeeDetails(Employee employee) throws DataNotFoundException {
+	public void updateEmployeeDetails(Employee employee) throws IdNotFoundException {
 	    EMPLOYEE_SERVICES.updateEmployeeDetails(employee);
-	    EMPLOYEE_DB.updateEmployeeDetails(employee);
+	    EMPLOYEE_IMPL.updateEmployeeDetails(employee);
 	}
 
-	public void deleteEmployee(int employeeId) throws DataNotFoundException {
+	public void deleteEmployee(int employeeId) throws IdNotFoundException  {
         EMPLOYEE_SERVICES.deleteEmployee(employeeId);
+	    EMPLOYEE_IMPL.deleteEmployee(employeeId);
     }
 }

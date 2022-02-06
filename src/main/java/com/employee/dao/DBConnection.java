@@ -19,15 +19,17 @@ public class DBConnection {
     * @return connection
     * @throws Exception 
     */
-    protected static Connection getConnection() throws Exception { 
+    protected Connection getConnection() { 
+        Connection connection = null;
         
         try {
-            Connection connection = DriverManager.getConnection(DATABASEURL, USERNAME, DATABASEPASSWORD);
-            
-            return connection;
+            connection = DriverManager.getConnection(DATABASEURL, USERNAME, DATABASEPASSWORD);
+                   
         } catch (Exception exception) {
-            throw new Exception("ConnectionIsNull");
+            System.out.println("ConnectionIsNull");
         }
+        
+        return connection;
     }
     
 }

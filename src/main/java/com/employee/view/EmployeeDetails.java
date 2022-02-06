@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.util.Scanner;
 
 import com.employee.controller.EmployeeController;
-import com.employee.exception.DataNotFoundException;
+import com.employee.exception.CustomException;
+import com.employee.exception.CustomException.DataNotFoundException;
+import com.employee.exception.CustomException.IdAlreadyExistsException;
 import com.employee.model.Employee;
 import com.employee.service.EmployeeDetailsValidation;
 
@@ -101,9 +103,11 @@ public class EmployeeDetails {
      *     Used to add employee details as including employeeId,
      *     name of the employee, salary details,contact number, emailId and
      *     date of birth of the employee and pass it to the controller.
-     * </p>     
+     * </p>   
+     *   
+	 * @throws IdAlreadyExistsException 
      */
-    public static void addEmployee() {
+    public static void addEmployee() throws IdAlreadyExistsException {
         final int employeeId = EmployeeDetails.getEmployeeId();
         final String employeeName = EmployeeDetails.getEmployeeName();
         final String salary = EmployeeDetails.getEmployeeSalary();
@@ -117,21 +121,21 @@ public class EmployeeDetails {
     
    /**
     * <h> Used to view the employee details.</h>
+    * 
+    * @throws DataNotFoundException 
     */
-    public static void viewEmployeeDetails() {
+    public static void viewEmployeeDetails() throws DataNotFoundException {
         EMPLOYEECONTROLLER.viewEmployeeDetails();
     }
     
    /**
     * <h> Used to delete the employee details by checking the employeeId. </h>
-    * 
-    * @throws DataNotFoundException 
     */
     public static void deleteEmployee() {
         
         try {
             EMPLOYEECONTROLLER.deleteEmployee(EmployeeDetails.getEmployeeId());
-        } catch (DataNotFoundException exception) {
+        } catch (CustomException exception) {
            System.out.println(exception);
         }
     }
@@ -143,8 +147,6 @@ public class EmployeeDetails {
     *     and then update employee details using switch case 
     *     implemetation by user choice.
     * </p>  
-    *
-    * @throws DataNotFoundException 
     */   
     public static void updateEmployeeDetails() {
         int employeeId = EmployeeDetails.getEmployeeId();
@@ -194,7 +196,7 @@ public class EmployeeDetails {
         
         try {
             EMPLOYEECONTROLLER.updateEmployeeDetails(employee);
-        } catch (DataNotFoundException exception) {
+        } catch (CustomException exception) {
            System.out.println(exception);
         }
     }    

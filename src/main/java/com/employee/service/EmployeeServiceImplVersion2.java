@@ -2,29 +2,52 @@ package com.employee.service;
 
 import java.util.Map;
 
-import com.employee.dao.EmployeeDB;
 import com.employee.dao.EmployeeDao;
+import com.employee.dao.EmployeeDaoImpl;
+import com.employee.exception.CustomException.DataNotFoundException;
+import com.employee.exception.CustomException.IdAlreadyExistsException;
+import com.employee.exception.CustomException.IdNotFoundException;
 import com.employee.model.Employee;
 
 /**
  * <h> Implements the EmployeeDB interface </h>
  */
- public class EmployeeServiceImplVersion2 implements EmployeeDB {
-    final EmployeeDao EMPLOYEEDAO = new EmployeeDao();
+ public class EmployeeServiceImplVersion2 implements EmployeeDao {
+    final EmployeeDaoImpl EMPLOYEE_DAO = new EmployeeDaoImpl();
     
-    public void addEmployee(Employee employee) {
-        EMPLOYEEDAO.addEmployee(employee);
+   /**
+    * Adds the employee details to the database
+    * 
+    * @throws IdAlreadyExistsException
+    */
+    public void addEmployee(Employee employee) throws IdAlreadyExistsException {
+        EMPLOYEE_DAO.addEmployee(employee);
     }
  
-    public Map<Integer, Employee> viewEmployeeData() {
-        return EMPLOYEEDAO.viewEmployeeData();
+   /**
+    * Shows all the employee details from the database
+    * 
+    * @throws DataNotFoundException
+    */
+    public Map<Integer, Employee> viewEmployeeData() throws DataNotFoundException {
+        return EMPLOYEE_DAO.viewEmployeeData();
     }
 
-    public void deleteEmployee(int employeeId) {
-        EMPLOYEEDAO.deleteEmployee(employeeId);
+   /**
+    * Deletes the employee deatails from the database
+    * 
+    * @throws IdNotFoundException
+    */
+    public void deleteEmployee(int employeeId) throws IdNotFoundException {
+        EMPLOYEE_DAO.deleteEmployee(employeeId);
     }
 
-    public void updateEmployeeDetails(Employee employee) {
-        EMPLOYEEDAO.updateEmployeeDetails(employee);
+   /**
+    * Updates the employee details from the database
+    * 
+    *  @throws IdNotFoundException
+    */
+    public void updateEmployeeDetails(Employee employee) throws IdNotFoundException {
+        EMPLOYEE_DAO.updateEmployeeDetails(employee);
     }
 }

@@ -1,6 +1,5 @@
 package com.employee.service;
 
-import com.employee.exception.DataNotFoundException;
 import com.employee.model.Employee;
 
 import java.util.LinkedHashMap;
@@ -25,12 +24,12 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	* @param employee  
 	*/
 	public void addEmployee(Employee employee) {
-	    final int employeeId = employee.getEmployeeId();
         
-        if (EMPLOYEEDETAILS.containsKey(employeeId)) {
+        if (EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) {
             System.out.println("The employeeId already exists!!...");
         } else {
-            EMPLOYEEDETAILS.put(employeeId, employee);
+            EMPLOYEEDETAILS.put(employee.getEmployeeId(), employee);
+            System.out.println("Successfully Updated!!!...");
         }
     }
 
@@ -49,12 +48,12 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	* @param employeeId 
     * @throws DataNotFoundException
 	*/
-	public void deleteEmployee(int employeeId) throws DataNotFoundException{
+	public void deleteEmployee(int employeeId) {
 	    
         if (EMPLOYEEDETAILS.containsKey(employeeId)) {
             EMPLOYEEDETAILS.remove(employeeId); 
         } else {
-            throw new DataNotFoundException("IdNotFound");
+            System.out.println("Invalid Employee Id!!!...");
         }
     }
 	
@@ -68,7 +67,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
 	* @param employee
     * @throws DataNotFoundException 
 	*/
-	public void updateEmployeeDetails(Employee employee) throws DataNotFoundException {
+	public void updateEmployeeDetails(final Employee employee) {
 	    
         if (EMPLOYEEDETAILS.containsKey(employee.getEmployeeId())) { 
             Employee employeeData = EMPLOYEEDETAILS.get(employee.getEmployeeId());
@@ -85,7 +84,7 @@ public class EmployeeServiceImpl implements EmployeeServices {
                 employeeData.setDateOfBirth(employee.getDateOfBirth());
             } 
          } else {
-             throw new DataNotFoundException("IdNotFound");
+             System.out.println("Invalid Employee Id");
          }
     }
  }
